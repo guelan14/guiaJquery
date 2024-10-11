@@ -145,25 +145,33 @@ alert("Contenido del Cuerpo:\n" + contenidoCuerpo);
 */
 
 /* 11
- let x = $(document);
-x.ready(inicializarEventos);
+$(document).ready(inicializarEventos);
 
 function inicializarEventos() {
-    let x = $("p");
-    x.click(presionParrafoDocumento); // Captura click en todos los párrafos
-    x = $("#tabla2 p");
-    x.click(presionParrafoSegundaTabla); // Captura click solo en los párrafos de la segunda tabla
+    let x = $("strong");
+    x.click(ocultarPalabra);
 }
 
-function presionParrafoDocumento() {
-    alert('Se presionó un párrafo del documento');
+function ocultarPalabra() {
+    $(this).hide(); // Ocultar la palabra que fue presionada
 }
+*/
 
-function presionParrafoSegundaTabla() {
-    alert('Se presionó un párrafo contenido en la segunda tabla.');
-}*/
+/*
+12
+$(document).ready(function () {
+// Evento mouseover para cambiar el color al pasar el mouse
+$("td").mouseover(function () {
+$(this).css("background-color", "yellow");
+});
 
-/*12
+// Evento mouseout pero sin cambiar el color al salir
+$("td").mouseout(function () {
+});
+});
+*/
+
+/*13
 $(document).ready(function() {
 // Al pasar el mouse sobre las celdas
 $("td").hover(
@@ -190,31 +198,34 @@ $(document).ready(function () {
 });*/
 
 /* 14
-$(document).ready(function() {
-// Capturar el evento de doble clic en el div
-$("#miDiv").dblclick(function() {
-    $(this).hide(); // Ocultar el div
-});
+$(document).ready(function () {
+  // Evento mousemove dentro del div
+  $("#miDiv").mousemove(function (event) {
+    let x = event.pageX - $(this).offset().left;
+    let y = event.pageY - $(this).offset().top;
+    $("#mensaje").text("Coordenadas dentro del div: X=" + x + " Y=" + y);
+  });
+
+  // Detectar cuando el mouse sale del div
+  $("#miDiv").mouseout(function () {
+    $("#mensaje").text("El mouse no está dentro del div.");
+  });
 });
 */
 
-/* 14
-$(document).ready(function() {
-$("#miDiv").mousemove(function(event) {
-// Obtener las coordenadas del mouse relativas al div
-const x = event.offsetX;
-const y = event.offsetY;
-
-// Mostrar las coordenadas en el div correspondiente
-$("#coordenadas").text(`Coordenadas: (x: ${x}, y: ${y})`);
+/* 15
+$(document).ready(function () {
+// Evento mousedown para cambiar el color cuando se presiona
+$(".boton").mousedown(function () {
+$(this).css("background-color", "yellow");
 });
 
-// Manejar el mouse saliendo del div
-$("#miDiv").mouseleave(function() {
-$("#coordenadas").text("El mouse no está dentro del div.");
+// Evento mouseup para regresar al color original cuando se suelta
+$(".boton").mouseup(function () {
+$(this).css("background-color", "lightblue");
 });
 });
-}*/
+*/
 
 /* 16
 $(document).ready(function() {
@@ -254,6 +265,19 @@ function resaltado() {
   x.attr("value", ""); 
 }*/
 
+/* 18
+$(document).ready(function () {
+// Evento blur para detectar cuando se pierde el foco
+$("#campoTexto").blur(function () {
+let x = $(this);
+let cadena = x.val();
+// Si la cadena está vacía, mostrar el alert
+if (cadena.length == 0) {
+alert("No ingresó datos");
+}
+});
+});*/
+
 /* 20
 $(document).ready(function() {
 $("#ocultar").click(function() {
@@ -274,7 +298,7 @@ $("#bloque2").fadeIn(1000); // Mostrar bloque2 lentamente
 });
 });*/
 
-/*
+/* 22
 $(document).ready(function() {
 $("#bloque1").click(function() {
 $(this).css("opacity", "0.20"); // Cambiar opacidad de inmediato
