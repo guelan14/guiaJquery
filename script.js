@@ -14,7 +14,7 @@ function pressButton() {
 */
 
 /*   
-3 - Selección de un elemento del documento mediante el id.
+2 - Selección de un elemento del documento mediante el id.
 let x = $(document);
 x.ready(startEvent);
 
@@ -39,7 +39,7 @@ function title2() {
   x.css("font-family", "Arial");
 }*/
 
-/* Selección de elementos por el tipo de elementos.
+/* 3 Selección de elementos por el tipo de elementos.
 let x = $(document);
 x.ready(inEvent);
 
@@ -55,75 +55,244 @@ function fila() {
 */
 
 /*	5 Selección de elementos utilizando los selectores CSS.
-    
-let x = $(document);
-x.ready(initEvent);
-
-function initEvent() {
-  let x = $("#button");
-  x.click(hideItem);
-}
-
-function hideItem() {
-  let x = $("#list1");
-  x.hide();
-}
- */
-
-/*
-6 - Selección de elementos utilizando las clases CSS definidas.
-let x = $(document);
-x.ready(ini);
-
-function ini() {
-  let x = $("#highlight-btn");
-  x.click(resaltar);
-}
-
-function resaltar() {
-  let x = $(".highlight");
-  x.css("background-color", "#ffff00");
-}*/
-
-/* 7
-$(document).ready(function(){
-  $("#change-text-btn").click(function(){
-      // Cambiamos el texto del párrafo con el método text(valor)
-      $("#paragraph").text("El texto ha sido cambiado.");
-  });
-});*/
-
-/* 8
-let x = $(document);
+     let x = $(document);
         x.ready(inicializarEventos);
 
         function inicializarEventos() {
-            let x = $("#boton1");
-            x.click(agregarPropiedadBorder);
-            x = $("#boton2");
-            x.click(recuperarPropiedadBorder);
-            x = $("#boton3");
-            x.click(eliminarPropiedadBorder);
+            let x = $("#tabla1 tr");
+            x.click(cambiarColor);
         }
 
-        // Añadir la propiedad border a la tabla
-        function agregarPropiedadBorder() {
-            let x = $("#tabla1");
-            x.attr("border", "1"); // Añadir la propiedad border con valor 1
+        function cambiarColor() {
+            let x = $(this);
+            x.css("background-color", "#ffff00"); // Cambiar el color de fondo a amarillo
         }
+ */
 
-        // Recuperar y mostrar el valor actual del atributo border
-        function recuperarPropiedadBorder() {
-            let x = $("#tabla1");
-            if (x.attr("border") != undefined)
-                alert("El valor del atributo border es: " + x.attr("border"));
-            else
-                alert("No está definida la propiedad border en la tabla");
-        }
+/*
+6 -       
+let x = $(document);
+x.ready(inicializarEventos);
 
-        // Eliminar la propiedad border de la tabla
-        function eliminarPropiedadBorder() {
-            let x = $("#tabla1");
-            x.removeAttr("border"); // Eliminar el atributo border
-        }
+function inicializarEventos() {
+$("#aumentar").click(cambiarTamanoFuente);
+$("#disminuir").click(cambiarTamanoFuente);
+$("#restablecer").click(cambiarTamanoFuente);
+}
+
+function cambiarTamanoFuente() {
+let tamanoActual = parseFloat($(".descripcion").css("font-size"));
+
+if ($(this).is("#aumentar")) {
+$(".descripcion").css("font-size", (tamanoActual + 2) + "px"); // Aumentar tamaño
+} else if ($(this).is("#disminuir")) {
+$(".descripcion").css("font-size", (tamanoActual - 2) + "px"); // Disminuir tamaño
+} else if ($(this).is("#restablecer")) {
+$(".descripcion").css("font-size", "16px"); // Restablecer a tamaño original
+}
+}*/
+
+/* 7
+$(document).ready(function() {
+$("#cambiar").click(cambiarContenidoTabla1);
+});
+
+function cambiarContenidoTabla1() {
+$("#tabla1 td").text("-"); // Cambiar contenido de la primera tabla
+}*/
+
+/* 8
+function cambiarHipervinculo(nuevaUrl, nuevoTexto) {
+$("#miHipervinculo").attr("href", nuevaUrl); // Cambia la propiedad href
+$("#miHipervinculo").text(nuevoTexto); // Cambia el texto del hipervínculo
+}
+
+function eliminarHipervinculo() {
+$("#miHipervinculo").removeAttr("href"); // Elimina la propiedad href
+$("#miHipervinculo").text("Hipervínculo Eliminado"); // Cambia el texto del hipervínculo
+}
+}
 */
+
+/* 9
+$(document).ready(function() {
+$("#agregarClases").click(function() {
+$("#miTabla thead").addClass("estilo-thead"); // Agregar clase al thead
+$("#miTabla tbody").addClass("estilo-tbody"); // Agregar clase al tbody
+});
+
+$("#quitarClases").click(function() {
+$("#miTabla thead").removeClass("estilo-thead"); // Quitar clase al thead
+$("#miTabla tbody").removeClass("estilo-tbody"); // Quitar clase al tbody
+});
+});
+  */
+
+/* 10
+$(document).ready(function() {
+// Botón para mostrar el contenido de la cabecera
+$("#mostrarCabecera").click(function() {
+let contenidoCabecera = $("head").html(); // Obtener contenido del <head>
+alert("Contenido de la Cabecera:\n" + contenidoCabecera);
+});
+
+// Botón para mostrar el contenido del cuerpo
+$("#mostrarCuerpo").click(function() {
+let contenidoCuerpo = $("body").html(); // Obtener contenido del <body>
+alert("Contenido del Cuerpo:\n" + contenidoCuerpo);
+});
+});
+*/
+
+/* 11
+ let x = $(document);
+x.ready(inicializarEventos);
+
+function inicializarEventos() {
+    let x = $("p");
+    x.click(presionParrafoDocumento); // Captura click en todos los párrafos
+    x = $("#tabla2 p");
+    x.click(presionParrafoSegundaTabla); // Captura click solo en los párrafos de la segunda tabla
+}
+
+function presionParrafoDocumento() {
+    alert('Se presionó un párrafo del documento');
+}
+
+function presionParrafoSegundaTabla() {
+    alert('Se presionó un párrafo contenido en la segunda tabla.');
+}*/
+
+/*12
+$(document).ready(function() {
+// Al pasar el mouse sobre las celdas
+$("td").hover(
+function() {
+$(this).css("background-color", "yellow"); // Cambiar el color de fondo a amarillo
+},
+function() {
+$(this).css("background-color", ""); // Regresar al color original
+}
+);
+});*/
+
+/*13
+$(document).ready(function () {
+  // Cambiar color de fondo al pasar el mouse
+  $(".link").hover(
+    function () {
+      $(this).css("background-color", "#add8e6"); // Color de fondo al pasar el mouse
+    },
+    function () {
+      $(this).css("background-color", "#f0f0f0"); // Color de fondo original
+    }
+  );
+});*/
+
+/* 14
+$(document).ready(function() {
+// Capturar el evento de doble clic en el div
+$("#miDiv").dblclick(function() {
+    $(this).hide(); // Ocultar el div
+});
+});
+*/
+
+/* 14
+$(document).ready(function() {
+$("#miDiv").mousemove(function(event) {
+// Obtener las coordenadas del mouse relativas al div
+const x = event.offsetX;
+const y = event.offsetY;
+
+// Mostrar las coordenadas en el div correspondiente
+$("#coordenadas").text(`Coordenadas: (x: ${x}, y: ${y})`);
+});
+
+// Manejar el mouse saliendo del div
+$("#miDiv").mouseleave(function() {
+$("#coordenadas").text("El mouse no está dentro del div.");
+});
+});
+}*/
+
+/* 16
+$(document).ready(function() {
+const tamañoOriginal = { width: 800, height: 70 };
+const tamañoRedimensionado = { width: 250, height: 250 };
+
+let esRedimensionado = false;
+
+// Manejar el doble clic
+$("#miDiv").dblclick(function() {
+if (esRedimensionado) {
+$(this).animate({
+width: tamañoOriginal.width + 'px',
+height: tamañoOriginal.height + 'px'
+});
+} else {
+$(this).animate({
+width: tamañoRedimensionado.width + 'px',
+height: tamañoRedimensionado.height + 'px'
+});
+}
+esRedimensionado = !esRedimensionado; // Alternar el estado
+});
+});*/
+
+/* 17
+let x = $(document);
+x.ready(inicializarEventos);
+
+function inicializarEventos() {
+  let x = $("#buscar");
+  x.focus(resaltado);
+}
+
+function resaltado() {
+  let x = $("#buscar");
+  x.attr("value", ""); 
+}*/
+
+/* 20
+$(document).ready(function() {
+$("#ocultar").click(function() {
+    $("#recuadro").hide(); 
+});
+
+$("#mostrar").click(function() {
+    $("#recuadro").show(); 
+});
+*/
+
+/* 21
+$(document).ready(function() {
+$("#bloque1").click(function() {
+$(this).fadeOut(1000, function() { // Ocultar bloque1 con decoloración
+$("#bloque2").fadeIn(1000); // Mostrar bloque2 lentamente
+});
+});
+});*/
+
+/*
+$(document).ready(function() {
+$("#bloque1").click(function() {
+$(this).css("opacity", "0.20"); // Cambiar opacidad de inmediato
+$(this).hide(); // Ocultar bloque1
+$("#bloque2").show(); // Mostrar bloque2
+});
+});*/
+
+/* 24
+$(document).ready(function() {
+$("#resaltar").click(function() {
+// Recorrer todos los enlaces
+$("a").each(function() {
+var enlace = $(this).attr("href");
+// Verificar si el enlace contiene ".ar"
+if (enlace.indexOf(".ar") !== -1) {
+$(this).addClass("resaltado"); // Agregar la clase resaltado
+}
+});
+});
+});*/
